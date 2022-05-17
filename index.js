@@ -1,17 +1,12 @@
-const chalk = require("chalk");
+//const chalk = require("chalk");
 const fs = require("fs");
 
-const { encode } = require("punycode");
-const { fileURLToPath } = require("url");
-
-fs.readFile(file, [encode], [callback])
-
-console.log(chalk.blue("Inicio do treinamento de NodeJs"));
-
-const paragrafo = "Teste NodeJs retornando uma funcção";
-
-function texto(string) {
-  return string;
+function pegaArquivo(caminhoDoArquivo) {
+  const encoding = "utf-8";
+  fs.readFile(caminhoDoArquivo, encoding, (_, dataTexto) => {
+    //console.log(chalk.blue(paragrafo));
+    console.log(pegaArquivo(dataTexto));
+  });
 }
 
-console.log(texto(paragrafo));
+pegaArquivo("./arquivos/Readme.md");
