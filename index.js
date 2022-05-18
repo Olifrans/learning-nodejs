@@ -12,16 +12,19 @@ const expreRegularTexto =
 
 function extraiLinks(expreRegularTexto) {
   const regex = /\[([^\]]*)\]\((https:\/\/[^$#\s].[^\s]*)\)/gm;
-  
+
+  const resultArray = [];
+  let varTemp;
+  while ((varTemp = regex.exec(expreRegularTexto)) !== null) {
+    resultArray.push({ [varTemp[1]]: varTemp[2] });
+  }
   //const linksExtraidos = expreRegularTexto.match(regex);
-  const linksExtraidos = regex.exec(expreRegularTexto)
+  //const linksExtraidos = regex.exec(expreRegularTexto);
 
-  console.log(linksExtraidos);
+  //console.log(linksExtraidos);
+  return resultArray;
 }
-extraiLinks(expreRegularTexto)
-
-
-
+extraiLinks(expreRegularTexto);
 
 function trataErro(erro) {
   throw new Error(
