@@ -15,7 +15,7 @@ function extraiLinks(expreRegularTexto) {
   while ((varTemp = regex.exec(expreRegularTexto)) !== null) {
     resultArray.push({ [varTemp[1]]: varTemp[2] });
   }
-  return resultArray;
+  return resultArray.length === 0 ? "Não existem links" : resultArray;
 }
 
 //Tratamento de erros
@@ -30,14 +30,12 @@ async function pegaArquivo(caminhoDoArquivo) {
   try {
     const encoding = "utf-8";
     const resultTexto = await fs.promises.readFile(caminhoDoArquivo, encoding);
-    console.log(extraiLinks(resultTexto));
+    return extraiLinks(resultTexto);
   } catch (erro) {
     trataErro(erro);
   } finally {
     console.log(chalk.yellow("operação concluída"));
   }
 }
-
-//pegaArquivo("./arquivos/Readme.md");
 
 module.exports = pegaArquivo;
