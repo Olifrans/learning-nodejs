@@ -11,14 +11,23 @@ function trataErro(erro) {
   );
 }
 
+//Função assicrona
 function pegaArquivo(caminhoDoArquivo) {
   const encoding = "utf-8";
-  fs.readFile(caminhoDoArquivo, encoding, (erro, dataTexto) => {
-    if (erro) {
-      trataErro(erro);
-    }
-    console.log(chalk.green(dataTexto));
-  });
+  fs.promises
+    .readFile(caminhoDoArquivo, encoding)
+    .then((dataTexto) => console.log(dataTexto))
+    .catch((erro) => trataErro(erro));
 }
+
+// function pegaArquivo(caminhoDoArquivo) {
+//   const encoding = "utf-8";
+//   fs.readFile(caminhoDoArquivo, encoding, (erro, dataTexto) => {
+//     if (erro) {
+//       trataErro(erro);
+//     }
+//     console.log(chalk.green(dataTexto));
+//   });
+// }
 
 pegaArquivo("./arquivos/");
