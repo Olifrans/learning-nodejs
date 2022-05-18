@@ -12,7 +12,10 @@ const expreRegularTexto =
 
 function extraiLinks(expreRegularTexto) {
   const regex = /\[([^\]]*)\]\((https:\/\/[^$#\s].[^\s]*)\)/gm;
-  const linksExtraidos = expreRegularTexto.match(regex);
+  
+  //const linksExtraidos = expreRegularTexto.match(regex);
+  const linksExtraidos = regex.exec(expreRegularTexto)
+
   console.log(linksExtraidos);
 }
 extraiLinks(expreRegularTexto)
