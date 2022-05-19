@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "react-scripts start"
+    "cli": "node cli.js ./arquivos/Readme.md"
   },
   "author": "",
   "license": "ISC",
+  
   "dependencies": {
     "chalk": "^4.1.2"
   }
